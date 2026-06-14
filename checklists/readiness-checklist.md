@@ -1,16 +1,21 @@
-# Readiness Checklist – Lab 05
+# Readiness Checklist - Lab 05
 
-Đây là danh sách kiểm tra (checklist) để đảm bảo stack Docker Compose của bạn đã sẵn sàng trước khi gửi bài. Hãy tick vào mỗi mục sau khi hoàn thành.
+Checklist used before submitting the Docker Compose stack.
 
-- [ ] **Database ready:** container DB đã chạy và phản hồi `pg_isready`. Kiểm tra bằng `docker exec -it fit4110-db-lab05 pg_isready -U $POSTGRES_USER`.
-- [ ] **AI service ready:** container AI service trả về `200` cho endpoint `/health` và `/predict` hoạt động.
-- [ ] **API ready:** container API trả `200` cho `/health` và có thể tạo/lấy readings khi token hợp lệ.
-- [ ] **Environment variables:** `.env` đã được thiết lập đúng (APP_PORT, POSTGRES_USER, AUTH_TOKEN,…). Không sử dụng secret thật; lưu secret vào `.env` cục bộ, commit `.env.example`.
-- [ ] **Network & Ports:** mạng `team-internal` hoạt động; API gọi được AI bằng hostname `ai-service`; ports 8000 (API), 9000 (AI) và 5432 (DB) được map đúng.
-- [ ] **Image tags:** bạn đã build image với tag `v0.1.0-<team>` và push lên registry (ghcr.io hoặc Docker Hub). Xác nhận rằng tag xuất hiện trong registry.
+- [x] **Database ready:** `fit4110-db-lab05` is healthy and `pg_isready -U lab05 -d iotdb` returns accepting connections.
+- [x] **AI service ready:** `fit4110-ai-lab05` is healthy, `GET /health` returns 200, and API calls `POST /predict` internally when creating readings.
+- [x] **API ready:** `fit4110-api-lab05` is healthy, `GET /health` returns 200, and readings can be created/read with a valid bearer token.
+- [x] **Environment variables:** runtime values are documented in `.env.example`; no real secrets are committed.
+- [x] **Network & Ports:** `team-internal` is active; API reaches DB by hostname `db` and AI by hostname `ai-service`; host ports 8000 and 9000 are mapped.
+- [x] **Image tags:** local images are built with `v0.1.0-team-iot` tags:
+  `fit4110/iot-ingestion:v0.1.0-team-iot` and `fit4110/ai-service:v0.1.0-team-iot`.
 
-Ghi chú thêm những vấn đề gặp phải hoặc điều chỉnh tại đây:
+Additional notes:
 
-```
-- Mô tả…
+```text
+- Newman compose test passed: 7 requests, 14 assertions, 0 failures.
+- Reports generated:
+  reports/newman-lab05-compose.xml
+  reports/newman-lab05-compose.html
+- Registry push is not performed here because Docker Hub/GHCR credentials are environment-specific.
 ```

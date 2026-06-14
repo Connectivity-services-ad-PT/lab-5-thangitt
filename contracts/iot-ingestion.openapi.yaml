@@ -2,6 +2,8 @@ openapi: 3.1.0
 info:
   title: FIT4110 Lab 05 - IoT Ingestion API
   version: 0.5.0
+  contact:
+    name: FIT4110 Lab Team
   description: |
     Contract dùng cho Lab 05 Docker Compose readiness, kế thừa logic của Lab 03/04.
     Payload chính dùng các trường device_id, metric, value, unit và timestamp.
@@ -190,6 +192,7 @@ paths:
     get:
       tags: [readings]
       operationId: getReadingById
+      description: Return one sensor reading by reading_id.
       summary: Lấy chi tiết một bản ghi cảm biến
       parameters:
         - name: reading_id

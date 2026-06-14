@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="FIT4110 Lab05 IoT Compose Verification" tests="7" time="0.138">
+  <testsuite name="GET health returns 200" id="7a050b9b-21f3-4dfa-9175-bad33f90feaa" timestamp="2026-06-14T18:57:35.505Z" tests="2" failures="0" errors="0" time="0.047">
+    <testcase name="Status code is 200" time="0.047" classname="GetHealthReturns200"/>
+    <testcase name="Service is healthy" time="0.047" classname="GetHealthReturns200"/>
+  </testsuite>
+  <testsuite name="POST valid reading returns 201" id="14cfe9de-8afd-4f72-80dc-cd7326e56ab7" timestamp="2026-06-14T18:57:35.505Z" tests="2" failures="0" errors="0" time="0.033">
+    <testcase name="Status code is 201" time="0.033" classname="PostValidReadingReturns201"/>
+    <testcase name="Created response is valid" time="0.033" classname="PostValidReadingReturns201"/>
+  </testsuite>
+  <testsuite name="GET latest readings returns saved item" id="65060121-2375-4c6e-b1c5-fda3ccd2e809" timestamp="2026-06-14T18:57:35.505Z" tests="2" failures="0" errors="0" time="0.012">
+    <testcase name="Status code is 200" time="0.012" classname="GetLatestReadingsReturnsSavedItem"/>
+    <testcase name="Items array contains readings" time="0.012" classname="GetLatestReadingsReturnsSavedItem"/>
+  </testsuite>
+  <testsuite name="GET reading by id returns saved item" id="382946b6-abd5-449d-bdcb-5307fade3887" timestamp="2026-06-14T18:57:35.505Z" tests="2" failures="0" errors="0" time="0.013">
+    <testcase name="Status code is 200" time="0.013" classname="GetReadingByIdReturnsSavedItem"/>
+    <testcase name="Reading id matches environment value" time="0.013" classname="GetReadingByIdReturnsSavedItem"/>
+  </testsuite>
+  <testsuite name="POST reading without token returns 401" id="77156e4f-c915-4421-8357-7cd56bc8a623" timestamp="2026-06-14T18:57:35.505Z" tests="2" failures="0" errors="0" time="0.003">
+    <testcase name="Missing token returns 401" time="0.003" classname="PostReadingWithoutTokenReturns401"/>
+    <testcase name="Problem details returned" time="0.003" classname="PostReadingWithoutTokenReturns401"/>
+  </testsuite>
+  <testsuite name="POST boundary temperature 80 is accepted with warning" id="b78be296-359f-4227-80da-af935a91ce3e" timestamp="2026-06-14T18:57:35.505Z" tests="2" failures="0" errors="0" time="0.028">
+    <testcase name="Boundary value 80 returns 201" time="0.028" classname="PostBoundaryTemperature80IsAcceptedWithWarning"/>
+    <testcase name="Warning header exists" time="0.028" classname="PostBoundaryTemperature80IsAcceptedWithWarning"/>
+  </testsuite>
+  <testsuite name="POST boundary temperature 81 is rejected" id="0881341c-6566-4334-b0f9-f7d98975d058" timestamp="2026-06-14T18:57:35.505Z" tests="2" failures="0" errors="0" time="0.002">
+    <testcase name="Boundary value 81 returns 422" time="0.002" classname="PostBoundaryTemperature81IsRejected"/>
+    <testcase name="Problem details returned" time="0.002" classname="PostBoundaryTemperature81IsRejected"/>
+  </testsuite>
+</testsuites>
